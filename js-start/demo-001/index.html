@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制DIV属性</title>
+	<style>
+		#change{
+			margin-top: 50px;
+			text-align: center;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: #333;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="button" value="变宽" id="oWidth">
+		<input type="button" value="变高" id="oHeight">
+		<input type="button" value="变色" id="oColor">
+		<input type="button" value="隐藏" id="oHide">
+		<input type="button" value="重置" id="oReset">
+	</div>
+	<div id="box"></div>
+	<script type="text/javascript">
+		var oWidth = document.getElementById('oWidth');
+		var oHeight = document.getElementById('oHeight');
+		var oColor = document.getElementById('oColor');
+		var oHide = document.getElementById('oHide');
+		var oReset = document.getElementById('oReset');
+		var oBox = document.getElementById('box');
+
+		oWidth.onclick = function(){
+			oBox.style.width = '200px';
+		}
+
+		oHeight.onclick = function(){
+			oBox.style.height = '200px';
+		}
+
+		oColor.onclick = function(){
+			oBox.style.backgroundColor = 'red';
+		}
+
+		oHide.onclick = function(){
+			oBox.style.display = 'none';
+		}
+
+		oReset.onclick = function(){
+			oBox.style.width = '100px';
+			oBox.style.height = '100px';
+			oBox.style.backgrondColor = '#333';
+			oBox.style.display = 'block';
+		}
+	</script>
+</body>
+</html>
