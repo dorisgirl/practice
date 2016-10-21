@@ -32,17 +32,27 @@
 		var oHide = document.getElementById('oHide');
 		var oReset = document.getElementById('oReset');
 		var oBox = document.getElementById('box');
+		var oBlock = oBox.style.display;
 
 		oWidth.onclick = function(){
-			oBox.style.width = '200px';
+				oBox.style.width = '200px';
+				if(oBox.style.display == 'none'){
+					oBox.style.display = 'block';
+				}
 		}
 
 		oHeight.onclick = function(){
 			oBox.style.height = '200px';
+			if(oBox.style.display == 'none'){
+					oBox.style.display = 'block';
+			}
 		}
 
 		oColor.onclick = function(){
 			oBox.style.backgroundColor = 'red';
+			if(oBox.style.display == 'none'){
+					oBox.style.display = 'block';
+				}
 		}
 
 		oHide.onclick = function(){
