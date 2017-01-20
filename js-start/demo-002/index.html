@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页换肤</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			height: 100%;
+		}
+		ul{
+			font-size: 0;
+			letter-spacing: -0.5em;
+			margin-left: 20px;
+		}
+		li{
+			display: inline-block;
+			letter-spacing: normal;
+			font-size: 12px;
+		}
+		#page{
+			height: 100%;
+			background: #FDD;
+		}
+		#skin{
+			padding-top: 20px;
+		}
+		#skin li{
+			cursor: pointer;
+			margin-right: 10px;
+			width: 30px;
+			height: 30px;
+			background: currentColor;
+			border: 0 none;
+		}
+		#skin .current{
+			width: 10px;
+			height: 10px;
+			background: #fff;
+			border-width: 10px;
+			border-style: solid;
+		}
+		#red{
+			color: red;
+		}
+		#green{
+			color: green;
+		}
+		#black{
+			color: black;
+		}
+		#nav{
+			background: red;
+			color: #fff;
+			margin-top: 20px;
+		}
+		#nav li{
+			width: 100px;
+			height: 22px;
+			line-height: 22px;
+			text-align: center;
+			border-right: 1px solid #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="page">
+		<ul id="skin">
+			<li id="red" class="current"></li>
+			<li id="green"></li>
+			<li id="black"></li>
+		</ul>
+		<ul id="nav">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script>
+		var oPage = document.getElementById("page"),
+			oRed = document.getElementById("red"),
+			oGreen = document.getElementById("green"),
+			oBlack = document.getElementById("black"),
+			oNav = document.getElementById("nav"),
+			oSkin = document.getElementById("skin"),
+			oSkinLi = oSkin.getElementsByTagName("li");
+
+		for(var i = 0; i < oSkinLi.length; i++){
+			//console.log(i);//0,1,2
+			oSkinLi[i].addEventListener("click", myFunction);
+
+			function myFunction(){
+				for( var m in oSkinLi ) oSkinLi[m].className = "";
+				this.className = "current";	
+				//console.log(i);//3	最外面那个for()会自己先走一遍，然后最后结果是3，又因为function内部没有i，所以会向外查找，因为click之后才会执行，所以最后结果是3
+			}
+		}
+		//console.log(i);//跟function内部的i得到的结果一样
+		  
+		// 闭包写法
+		/*
+		function myFunction(index){
+			return function(){
+				for( var m in oSkinLi ) oSkinLi[m].className = "";
+				this.className = "current"; 
+				console.log(index);  
+			}
+		}
+
+		for(var i = 0; i < oSkinLi.length; i++){
+			oSkinLi[i].addEventListener("click", myFunction(i));
+		}*/
+
+
+		oRed.onclick = function(){
+			oPage.style.backgroundColor = "#FDD";
+			oNav.style.backgroundColor = "red";
+		}
+
+		oGreen.onclick = function(){
+			oPage.style.backgroundColor = "#A3C5A8";
+			oNav.style.backgroundColor = "green";
+		}
+
+		oBlack.onclick = function(){
+			oPage.style.backgroundColor = "#ccc";
+			oNav.style.backgroundColor = "black";
+		}
+
+	</script>
+</body>
+</html>

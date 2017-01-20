@@ -58,7 +58,7 @@ setName(person);
 
 console.log(person.name)
 
-9.var colors = ['red', 'blue', 'green'];
+9.var colors = [ 'blue', 'green'];
 colors.length = 4;
 console.log(colors[3]);//undefined
 console.log(colors[4]);//undefined
@@ -153,6 +153,30 @@ function compare(value1, value2){
 
 var values = [10,20]
 values.sort(compare);//sort按升序排列
+
+
+//
+function displayInfo(args){
+	var output = '';
+	if(typeof args.name == 'string'){
+		output += 'name:' + args.name + '\n';
+	}
+	if(typeof args.age == 'number'){
+		output += 'Ages:' + args.age + '\n';
+	}
+	console.log(output);
+}
+
+displayInfo({
+	name: 'Nich',
+	age: 29
+});
+displayInfo({
+	name: 'Gray'
+})
+
+
+
 
 //concat()方法 基于当前数组中的所有项创建一个新数组，不改变原有数组
 
@@ -398,16 +422,298 @@ function sayName(){
   alert(this.name);
 }
 
-var function = new Object();
-typeof(Number)
+//对象字面量表示法
+function displayInfo(args){
+
+	var output = '';
+	if (typeof args.name == 'string'){
+		output += 'Name: ' + args.name + '\n';
+	}
+	if(typeof args.age == 'number'){
+		output += 'Age: ' +args.age;
+	}	
+	console.log(output);
+
+}
+
+displayInfo({
+	name: 'Nich',
+	age: 29
+});
+
+displayInfo({
+	name: 'Gray',
+	age: 27
+});
+
+//方括号可以通过变量来访问属性
+var person = {
+	name: 'Nich',
+	age: 28
+};
+var propertyName = 'name';
+console.log(person[propertyName]);//Nich
+console.log(person.propertyName);//undefined
+
+
+//数组
+var colors = ['red', 'blue', 'green'];
+console.log(colors[0]);//red
+console.log(colors[-1]);//undefined
+
+var colors = ['red', 'green', 'blue'];
+console.log(colors.toString());	//red,green,blue
+console.log(colors.valueOf());	//["red", "green", "blue"]
+
+
+var person1 = {
+	toLocaleString: function(){
+		return 'Niko';
+	},
+	toString: function(){
+		return 'Nich';
+	}
+};
+var person2 = {
+	toLocaleString: function(){
+		return '28';
+	},
+	toString: function(){
+		return '29';
+	}
+};
+var people = [person1, person2];
+console.log(people);	//[Object, Object]
+console.log(people.toLocaleString());	//Niko,28
+
+//数组的push()方法
+var colors = ['red', 'green'];
+var newColors = colors.push('blue');
+var delColors = colors.pop();
+console.log(newColors);	//3
+//console.log(delColors);	//blue
+console.log(colors);	//["red", "green"]
+
+
+//比较函数--升序排列
+function compare(value1, value2){
+	if(value1 > value2){
+		return 1;
+	}else if(value1 < value2){
+		return -1;
+	}else{
+		return 0;
+	}
+}
+
+var values = [2,0,1,6,1,2,1,5];
+var newValues = values.sort(compare);
+console.log(values);
+
+
+//slice()方法
+var colors =['red','green','blue','black','orange','yellow'];
+var colors2 = colors.slice(1);
+var colors3 = colors.slice(1,4);
+console.log(colors2);		//['green','blue','black','orange','yellow'];
+console.log(colors3);		//['green','blue','black'];
+
+
+//函数名是指向函数的指针
+function sum(num1, num2){
+	return num1 + num2;
+}
+var newSum = sum;
+console.log(newSum == sum);
+console.log(sum(10, 10));
+console.log(newSum(20, 10));
+
+var a = new Object();
+var b = new Object();
+console.log(a === b);
+
+
+var a = '10';
+var b = a;
+console.log( a === b);
+
+
+var a = ['apple'];
+var b = a;
+console(b);
+
+
+//js变量赋值相关
+var a = ['apple'];
+var b = a;
+a = ['banana'];	//指向一个新的堆内存
+console.log(b);	//apple
+
+var a = 'apple';
+var b = a;
+a = 'banana';
+console.log(b);	//apple 因为基本类型值复制之后相互独立，因此不会被影响
+
+var a = {name: 'apple'};
+var b = a;
+a.name = 'banana';
+console.log(b.name);	//banana 因为改变原有堆内存内name属性的值，b和a指向同一个堆内存，因此b的name属性也会改变
+
+var a = {name: 'apple'};
+var b = a;
+a = {name: 'banner'};//指向一个新的内存，这里的a跟上面的a指向的不是同一个堆内存
+console.log(b.name);	//apple
+
+
+var a = {name: 'apple'};
+var b = a.name;//此时b为一个字符串
+a.name = 'banana';
+console.log(b);		//apple 仅仅改变了a的name属性的值，跟b没有什么关系
+
+var a = {name: "apple"};
+var b = a;
+a.name = "banana";
+console.log(b.name);	//banana	a b指向同一个堆内存，所以b的name属性也会改变
+
+//函数声明和函数表达式
+console.log(sum(10, 10)); //20
+function sum(num1, num2){
+	return num1 + num2;
+}
+
+console.log(sum(10, 10));	// Uncaught TypeError: sum is not a function
+var sum = function(num1, num2){
+	return num1 + num2;
+};
+
+
+//作为值得函数
+function callSomeFunction(callSomeFunction, someArgument){
+	return callSomeFunction(someArgu ment);
+}
+function add10(num){
+	return num + 10;
+};
+var result1 = callSomeFunction(add10, 10);
+console.log(result1);
+
+
+//函数内部属性
+function factorial(num){
+	if(num <= 1){
+		return 1;
+	}else{
+		return num * arguments.callee(num - 1);
+	}
+};
+
+var trueFactorial = factorial;
+factorial = function(){
+	return 0;
+};
+console.log(trueFactorial(5));	//120
 
 
 
 
+function foo(x) {
+    var tmp = 3;
+    return function (y) {
+        console.log(x + y + (++tmp));
+    }
+}
+var bar = foo(2); // bar 现在是一个闭包
+bar(10);
+
+// 解析
+var bar = foo(2)之后，bar成为一个函数 
+function(y){
+	console.log(x + y + (++tmp));
+}
+所以，bar(10)就解析为
+function(10){
+	console.log(x + 10 + (++tmp));
+}
+
+所以，最后是
+function foo(2){
+	var tmp = 3;
+	return function(10){
+		console.log(2 + 10 + 4)	//结果为16
+	}
+}
+// 解析结束
+
+
+
+function foo(x) {
+    var tmp = 3;
+    return function (y) {
+        console.log(x + y + (++tmp));
+    }
+}
+var bar = foo(2); // bar 现在是一个闭包
+bar(10);
+
+
+
+function foo(x) {
+    var tmp = 3;
+    function bar(y) {
+        console.log(x + y + (++tmp));
+    }
+    bar(10);
+}
+foo(2);
+
+
+function foo(x) {
+	var tmp = 3;
+
+	return function (y) {
+		console.log(x + y + tmp);
+		x.memb = x.memb ? x.memb + 1 : 1;
+		//等同于
+		// if(x.memb){
+		//     x.memb += 1
+		// }else{
+		//    x.memb = 1
+		// }
+		console.log(x.memb);
+	}
+}
+
+var age = new Number(2);	//声明age是一个Number类型
+var bar = foo(age); 
+
+bar(10);	//function(10){……}
+
+// 解析
+1、x 是一个值为2的number对象
+2、对x进行数学运算的时候， 会拿x的值做运算
+//解析结束
+//
+//
+
+var count = 10;
+function test(){
+	for (var i = 0; i < count; i++){
+	  	console.log(i + '内部'); //0内部 1内部 2内部 3内部 4内部 5内部 6内部 7内部 8内部 9内部
+	}
+}
+test(2);
+console.log(i + '外部'); //报错
 
 
 
 
+for(var i = 0; i < 3; i++){
+	function test(){
+		console.log(i);
+	}
+}
+console.log(i + '外部');
+test(2);
 
 
 
