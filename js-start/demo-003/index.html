@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数接收参数并弹出</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.box{
+			width: 200px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		.input-text{
+			border: 1px solid #dedede;
+			height: 22px;
+			line-height: 22px;
+			background: #fff;
+			padding: 0 10px;
+			width: 120px;
+		}
+		p{
+			margin-bottom: 10px;
+		}
+		button{
+			cursor: pointer;
+			padding: 3px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p><input class="input-text" type="text" value="上海市"></p>
+		<p><input class="input-text" type="text" value="长宁区"></p>
+		<p><button>传参</button></p>
+	</div>
+	<script>
+		window.onload = function(){
+			var oButton = document.getElementsByTagName("button");
+			var oInput = document.getElementsByTagName("input");
+			oButton[0].onclick = function(){
+				console.log(oInput[0].value);
+				console.log(oInput[1].value);
+			}
+		}
+	</script>
+</body>
+</html>
