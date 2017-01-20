@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环变色</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#listBox{
+			font-size: 0;
+			letter-spacing: -0.5em;
+			width: 500px;
+			margin: 20px auto;
+		}
+		#listBox li{
+			display: inline-block;
+			width: 150px;
+			height: 100px;
+			margin-right: 10px;
+			background: black;
+		}
+		p{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<ul id="listBox">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<p><button>点击将div变成红色</button></p>
+	<script>
+		window.onload = function(){
+			var oButton = document.getElementsByTagName("button");
+			oList = document.getElementById("listBox");
+			oListLi = oList.getElementsByTagName("li");
+
+			oButton[0].onclick = function(){
+				for(var i = 0; i<oListLi.length; i++){
+					oListLi[i].style.backgroundColor = "red";
+				}
+			}
+		}
+	</script>
+</body>
+</html>
