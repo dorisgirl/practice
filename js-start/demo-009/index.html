@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求出数组中所有数字的和</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 500px;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p><label><input type="text" value="1,2,3"><span>输入数字求和，数字之间用半角","号分隔</span></label></p>
+		<p><button>求和</button></p>
+		<strong id="all"></strong>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var oInput = document.getElementsByTagName("input")[0],
+				oButton = document.getElementsByTagName("button"),
+				oAll = document.getElementById("all");
+
+			// oInput.onkeyup = function (){
+			// 	this.value = this.value.replace(/[^(\d)|(,)]/,"")
+			// }
+
+			oButton[0].onclick = function(){
+				var numAll = 0,
+					oText = oInput.value.split(",");//每次点击“求和”按钮的时候，重新获取value值，保证value值及时更新，得到的value值是个字符串，所以需要用split将字符串分割成数组
+
+				for(var i in oText){
+					numAll += parseInt(oText[i]);
+				}
+				oAll.innerHTML = numAll;
+			};
+		}
+	</script>
+</body>
+</html>
