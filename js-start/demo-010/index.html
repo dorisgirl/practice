@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹层</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		.fix-box{
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 200px;
+			height: 200px;
+			border: 1px solid #dedede;
+			z-index: 2;
+			background: #fff;
+		}
+		.fix-box-title{
+			position: relative;
+			height: 24px;
+			line-height: 24px;
+			padding-left: 15px;
+			background: #ccc;
+			border-bottom: 1px solid #dedede;
+			color: #fff;
+		}
+		#close{
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 12px;
+			color: #333;
+			text-decoration: none;
+		}
+		#mask{
+			display: none;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			background: rgba(0,0,0,0.5);
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<button>弹层</button>
+	</div>
+	<div class="fix-box" id="dialog">
+		<h2 class="fix-box-title"><a href="" id="close">关闭</a></h2>
+	</div>
+	<div id="mask"></div>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementsByTagName("button")[0],
+				oDialog = document.getElementById("dialog"),
+				oClose = document.getElementById("close"),
+				oDialogStyle = oDialog.style,
+				oMask = document.getElementById("mask");
+
+			oBtn.onclick = function(){
+
+				if(oDialogStyle.display == "block"){
+					
+					oDialogStyle.display = "none";
+					oMask.style.display = "none";
+				}else{
+					oDialogStyle.display = "block";
+					oMask.style.display = "block";
+				}
+			}
+
+			oClose.onclick = function(){
+
+				oDialogStyle.display = "none";
+				oMask.style.display = "none";
+
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

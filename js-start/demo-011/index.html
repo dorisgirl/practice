@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数传参</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 500px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		#text{
+			width: 100px;
+			height: 100px;
+			margin: 10px auto;
+			text-align: left;
+			padding: 10px 15px;
+			font-size: 12px;
+			line-height: 1.3;
+			background: aliceblue;
+			color: #000;
+		}
+		input{
+			width: 100px;
+			height: 24px;
+			line-height: 24px;
+			padding-left: 10px;
+		}
+		p{
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p><label>属性名</label><input type="text" value="background"></p>
+		<p><label>属性值</label><input type="text" value="aliceblue"></p>
+		<p><button id="sure">确定</button><button id="reset">重置</button></p>
+		<p id="text">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</p>
+	</div>
+	<script>
+		window.onload = function(){
+			var oInput01 = document.getElementsByTagName("input")[0];
+			var oInput02 = document.getElementsByTagName("input")[1];
+			var oSure = document.getElementById("sure");
+			var oReset = document.getElementById("reset");
+			var oText = document.getElementById("text");
+
+			oSure.onclick = function(){
+				var oProto = oInput01.value;
+				var oValue = oInput02.value;
+
+				//oText.style.oProto = oValue;	这样写 等于设置style的'oProto'属性了
+				oText.style[oProto] = oValue;	//当属性值 是变量的时候 要用中括号
+			}
+
+			oReset.onclick = function(){
+				oInput01.value = "background";
+				oInput02.value = "aliceblue";
+
+				oText.removeAttribute("style");	//removeAttribute() 方法删除指定的属性
+
+			}
+		}
+	</script>
+</body>
+</html>
