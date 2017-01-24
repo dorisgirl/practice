@@ -72,7 +72,7 @@
 				oUl = document.getElementById("content").getElementsByTagName("ul");
 
 				for (var i = 0; i < oLi.length; i++) {
-					oLi[i].index = i;	//index 属性可返回下拉列表中选项的索引位置，需要先给index属性设置值
+					oLi[i].index = i;	//这里的index只是随手给的一个存储i的属性
 
 					oLi[i].onmouseover = function(){
 						for (var n = 0; n < oLi.length; n++) {
