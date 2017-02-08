@@ -75,7 +75,8 @@ ul{list-style-type:none;}
         for (var i = 0; i < oText.length; i++) {
             oLi[i].index = i;
 
-            oLi[i].onmouseover = function(){
+            oLi[i].onmouseover = function(){    //oLi换成oText的时候，会出现闪烁，因为a标签绑定了鼠标移入移出的事件，放上去的时候a隐藏了，会触发它的移出事件，触发了后 又显示了，然后就又触发移入事件，会一直循环
+                
                 oText[this.index].style.visibility = "hidden";
                 oImg[this.index].style.display = "block";
             }  
