@@ -17,7 +17,7 @@ body{text-align:center;font:700 30px/1.5 arial;}
 		updateNum();
 		function updateNum(){
 			oBody.innerHTML = ++i;
-		}
+		}	//函数放在setInterval()外面是因为这样页面中可以先被写入1，如果直接放setInterval()里面，会延迟执行函数
 	}
 </script>
 </body>
