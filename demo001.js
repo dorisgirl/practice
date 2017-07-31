@@ -284,18 +284,18 @@ console.log(typeof(a));
 
 
 var colors = ['red', 'green', 'blue'];
-var removed = colors.splice(0,1); 
+var removed = colors.splice(0,1);
 // console.log(colors);		//red,black
 //console.log(removed);			//green,blue
 
 removed = colors.splice(1,0,'yellow','orange');
-//console.log(colors);			
-//console.log(removed);			
+//console.log(colors);
+//console.log(removed);
 
 removed = colors.splice(1,1,'red','purple');
 
-console.log(colors);			
-console.log(removed);	
+console.log(colors);
+console.log(removed);
 
 
 // arguments.callee&&递归函数
@@ -402,7 +402,7 @@ function Person(name, age, job){
   this.job = job;
   this.sayName = function(){
       alert(this.name);
-	}; 
+	};
 }
 //02
 function Person(name, age, job){
@@ -431,7 +431,7 @@ function displayInfo(args){
 	}
 	if(typeof args.age == 'number'){
 		output += 'Age: ' +args.age;
-	}	
+	}
 	console.log(output);
 
 }
@@ -626,7 +626,7 @@ var bar = foo(2); // bar 现在是一个闭包
 bar(10);
 
 // 解析
-var bar = foo(2)之后，bar成为一个函数 
+var bar = foo(2)之后，bar成为一个函数
 function(y){
 	console.log(x + y + (++tmp));
 }
@@ -684,7 +684,7 @@ function foo(x) {
 }
 
 var age = new Number(2);	//声明age是一个Number类型
-var bar = foo(age); 
+var bar = foo(age);
 
 bar(10);	//function(10){……}
 

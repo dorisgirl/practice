@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display: grid</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            display: inline-grid;
+            grid-template-rows: 50px 100px; /*每行的高度*/
+            grid-template-columns: 50px 100px; /*每列的宽度，有几个值表示一行有几列*/
+        }
+        div{
+            display: grid;
+            /*grid-template-rows: minmax(50px, auto); 
+            grid-template-columns: minmax(auto, 50%) 1fr 3em;*/
+        }
+        span,
+        li{
+            border: 1px solid #dedede;
+        }
+        .test span{
+            grid-area: 2 / 3 / 4 / 5;
+            grid-row: 2 / span 3; 
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="title">display: grid</h2>
+    <div>
+        <span>111</span>
+        <span>2</span>
+        <span>333</span>
+        <span>4444444</span>
+        <span>5</span>
+    </div>
+
+    <h2 class="title">display: inline-grid</h2>
+    <ul>
+        <li>111</li>
+        <li>22222</li>
+        <li>33333333</li>
+        <li>4</li>
+        <li>555555555</li>
+        <li>666</li>
+    </ul>
+
+    <h2 class="title">display: grid</h2>
+    <div class="test">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>compose new tweet</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        button[disabled] {
+            cursor: not-allowed;
+            opacity: .5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="twitterVue">
+        <textarea v-model="tweet"></textarea>
+        <button :disabled="tweetIsEmpty">Tweet</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#twitterVue',
+            data: {
+                tweet: ''
+            },
+            computed: {
+                tweetIsEmpty: function () {
+                    return this.tweet.length === 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
