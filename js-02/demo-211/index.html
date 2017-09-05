@@ -71,12 +71,14 @@
   </style>
   <script type="text/javascript">
     window.onload = function () {
-      var oDiv = document.getElementById('box');
-      var oImg = oDiv.getElementsByTagName('img');
+      var oBox = document.getElementById('box');
+      var oImg = oBox.getElementsByTagName('img');
+      var oDiv = oBox.getElementsByTagName('div')[0];
       for (var i = 1; i < oImg.length; i++) {
         oImg[i].index = i;
-        oImg[i].onmouseover = function(){
-          oImg[0].src = this.src.replace(/small/,'big');
+        oImg[i].onmouseover = function () {
+          oImg[0].src = this.src.replace(/small/, 'big');
+          oImg[0].complete ? oDiv.style.display = 'none' : (oImg[0].onload = function () { oDiv.style.display = 'none' });
         }
       }
     };
