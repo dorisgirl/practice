@@ -71,16 +71,16 @@
           oInput[i].checked && n++;
         }
         oInput[0].checked = oInput.length - 1 === n;
-        oLabel.innerHTML = oInput[0].checked ? '全不选' : '全选'
+        oLabel.innerHTML = oInput[0].checked ? '全不选' : '全选';
       };
 
-      //全选/全不选
+      //全选
       oInput[0].onclick = function () {
         for (var i = 1; i < oInput.length; i++) {
-          oInput[i].checked = this.checked
-        }
+          oInput[i].checked = this.checked;
+        };
         isCheckAll();
-      }
+      };
 
       //反选
       oA.onclick = function () {
@@ -88,14 +88,14 @@
           oInput[i].checked = !oInput[i].checked;
         }
         isCheckAll();
-      }
+      };
 
-      //选项列表关联全选
-      for (var i = 1; i < oInput.length; i++){
+      //关联全选
+      for(var i = 1; i < oInput.length; i++){
         oInput[i].onclick = function(){
           isCheckAll();
         }
-      }
+      };
 
     }
   </script>
